@@ -1,9 +1,9 @@
 import express from "express";
-import userRoute from "./Routers/user.Router.js";
-import productRoute from "./Routers/product.Router.js";
-import sellerRoute from "./Routers/sellerRouter.js";
+import userRoute from "./src/Routers/user.Router.js";
+import productRoute from "./src/Routers/product.Router.js";
+import sellerRoute from "./src/Routers/sellerRouter.js";
 import dotenv from 'dotenv'
-import { connectMongodb } from "./db/mongoDb.js";
+import { connectMongodb } from "./src/db/mongoDb.js";
 
 const app = express();
 
