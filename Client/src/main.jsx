@@ -4,13 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { CartProvider } from './context/CartContext.jsx'
+import { Provider } from 'react-redux'
+import { store } from './redux/Store.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <CartProvider>
+      <Provider store={store}>
         <App />
-      </CartProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 )

@@ -1,28 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import { useContext } from 'react';
-import Product from '../components/Product';
+import { useState } from "react"
+import Product from "../components/Product"
+import { useEffect } from "react";
+// import axios from "axios";
 import data from '../data'
-import { CartContext } from '../context/CartContext';
-const Shope = () => {
-   const { cart, addCart } = useContext(CartContext);
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/reducer";
 
+
+const Shope = () => {
    const [products, setProducts] = useState();
+   const [filteredProduct, setFilteredProduct] = useState();
+   const dispatch = useDispatch();
+
+   const addProduct = (product) => {
+      dispatch(addToCart({ product }));
+
+   }
+
+
+   const onSearch = (e) => {
+      const text = e.target.value.toLowerCase();
+      if (text.length < 0) {
+         setFilteredProduct(products);
+      }
+      const filtered = products.filter((product) => product.name.toLowerCase().includes(text));
+      setFilteredProduct(filtered);
+   }
 
    useEffect(() => {
-      setProducts(data[0]['items']);
-   }, []);
-   return (
-      <div className="container">
-         <h1>Products</h1>
+      // axios("https://jsonplaceholder.typicode.com/photos").then((res) => {
+      //   setProducts(res.data)
+      // }).catch((err) => {
+      //   console.log(err);
+      // })
+      setProducts(data[0]["items"])
 
+   }, [])
+
+   useEffect(() => {
+      setFilteredProduct(products);
+   }, [products])
+
+
+   return (
+      <div className="container mt-5">
+         <h1>Products</h1>
+         <input type="text" onChange={onSearch} />
          <div className="row">
             {
-               products?.map((product) => <Product key={product.id} product={product} addCart={addCart} />
+               filteredProduct?.map((product) => <Product key={product.id} product={product} addCart={addProduct} />
                )
             }
          </div>
       </div>
-
    )
 }
 

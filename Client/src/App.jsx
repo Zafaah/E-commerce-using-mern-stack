@@ -5,8 +5,9 @@ import Home from "./pages/Home"
 import Shope from "./pages/Shope"
 import Carts from "./pages/Carts"
 import Profile from "./pages/Profile"
-import CartsLIst from "./components/CartsLIst"
-import { useState } from "react"
+import Login from "./pages/Login"
+import Regidter from "./pages/Regidter"
+
 function App() {
   const User = "user"
 
@@ -21,6 +22,8 @@ function App() {
           <Route path="Carts" element={<Carts />} />
           <Route path="Profile" element={<Profile />} />
         </Route>
+        <Route path="Login" element={<Login />} />
+        <Route path="Register" element={<Regidter />} />
       </Routes>
     </div>
   )
