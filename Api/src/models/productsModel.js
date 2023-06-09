@@ -15,23 +15,16 @@ const productSchema = new mongoose.Schema({
       minLength: 1,
    },
    pPrice: {
-      type: String,
+      type: Number,
       require: true,
       maxLength: 20,
       minLength: 1,
    },
-   pType: {
+   imageUrl: {
       type: String,
       require: true,
-      maxLength: 20,
-      minLength: 1,
    },
-   pQty: {
-      type: String,
-      require: true,
-      maxLength: 20,
-      minLength: 1,
-   }
+
 
 
 },
@@ -44,9 +37,9 @@ export const validateProduct = (product) => {
    const Schema = Joi.object({
       pID: Joi.string().max(20).min(1).required(),
       pName: Joi.string().max(50).min(1).required(),
-      pType: Joi.string().max(20).min(1).required(),
+      imageUrl: Joi.string().required(),
       pPrice: Joi.string().max(20).min(1).required(),
-      pQty: Joi.string().max(20).min(1).required(),
+
    })
    return Schema.validate(product)
 }

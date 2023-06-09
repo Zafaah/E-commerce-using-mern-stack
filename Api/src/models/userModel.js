@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       require: true,
       minLength: 5,
-      maxLength: 9,
+      maxLength: 100,
    },
    Roll: {
       type: String,
@@ -38,7 +38,7 @@ export const validateUser = (user) => {
    const Schema = Joi.object({
       userName: Joi.string().min(5).max(29).required(),
       Email: Joi.string().min(5).max(29).required(),
-      password: Joi.string().min(5).max(9).required(),
+      password: Joi.string().min(5).max(100).required(),
       Roll: Joi.string().min(5).max(10).required()
    });
    return Schema.validate(user)

@@ -11,7 +11,7 @@ const LoginForm = () => {
       console.log(UserName, password);
 
       const data = await axios.post("/Users/Login", { userName: UserName, password: password })
-      console.log(data.data)
+      console.log(data)
 
 
 

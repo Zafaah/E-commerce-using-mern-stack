@@ -1,20 +1,27 @@
-import products from "../../models/productsModel.js";
+import products from "../models/productsModel.js";
+
+;
 
 export const getAll = async (req, res) => {
-   const product = await product.find([]);
+   const product = await products.find();
+   res.send(product)
+};
+export const getSingle = async (req, res) => {
+   const id = req.params;
+   const product = await products.findOne({ _id: id });
    res.send(product)
 };
 
 export const addProduct = async (req, res) => {
 
-   const product = new product({
+   const product = new products({
       pName: req.body.pName,
       pPrice: req.body.pPrice,
       pType: req.body.pType,
       pQty: req.body.pQty,
    });
    await product.save();
-   res.send();
+   res.send(product);
 };
 
 export const updateProduct = async (req, res) => {

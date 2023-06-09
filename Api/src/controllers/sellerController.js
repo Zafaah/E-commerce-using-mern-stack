@@ -1,9 +1,10 @@
+import seller from "../models/sellesModel.js";
 
-import seller from "../../models/sellesModel.js";
+
 
 export const getAll = async (req, res) => {
-   const product = await product.find([]);
-   res.send(product)
+   const seller = await seller.find([]);
+   res.send(seller)
 };
 
 export const addSeller = async (req, res) => {
