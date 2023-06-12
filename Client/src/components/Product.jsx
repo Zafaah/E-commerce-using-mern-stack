@@ -2,7 +2,7 @@ const Product = ({ product, addCart }) => {
    const { name, imageUrl } = product
    return (
       <>
-         <div className="card col-3 m-4" style={{ width: "300px" }}>
+         <div className="card  m-4" style={{ width: "250px" }}>
             <div className="view overlay">
                <img className="card-img-top" src={imageUrl} alt="Card image cap" />
                <a href="#!">

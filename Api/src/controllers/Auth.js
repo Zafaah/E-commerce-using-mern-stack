@@ -41,11 +41,17 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
    try {
 
-      const user = await Users.findOne({ userName: req.body.userName });
+      const { userName, password } = req.body
+      const user = await Users.findOne({ userName: userName });
       if (!user)
          return res.status(404).send("user not found");
+      const isCheck = await Users.findOne({ userName: userName, password: password });
 
-      const isCorrect = bcrypt.compare(req.body.password, user.password,);
+      if (!isCheck)
+         return res.status(400).send("wrong passwor or userName");
+
+      const isCorrect = bcrypt.compare(password, user.password);
+
       if (!isCorrect)
          return res.status(400).send("wrong passwor or userName");
 
@@ -57,4 +63,22 @@ export const login = async (req, res) => {
    } catch (err) {
       res.status(500).send(err)
    }
+}
+export const updateUser = async (req, res) => {
+   const { id } = req.params;
+   const User = await Users.findOneandUpdate('_id', id);
+
+   if (!User)
+      return res.status(400).send({ message: "not Found" });
+   res.send(User)
+};
+
+export const deleteUser = async (req, res) => {
+   const { id } = req.params;
+
+   const User = await Users.findOneAndDelete({ _id: id });
+
+   if (!User)
+      return res.status(400).send({ message: "not Found" });
+   res.send(User)
 }

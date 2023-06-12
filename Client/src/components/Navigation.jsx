@@ -15,14 +15,14 @@ const Navigation = () => {
                   <div className="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul className="navbar-nav ms-auto align-items-center">
                         <li className="nav-item">
-                           <Link className="nav-link mx-2" to="/"><i className="fas fa-plus-circle pe-2" />Home</Link>
+                           <Link className="nav-link mx-2" to="/"><i className="fas fa-plus-circle pe-2" />Home
+
+                           </Link>
                         </li>
                         <li className="nav-item">
                            <Link className="nav-link mx-2" to="/Shope"><i className="fas fa-bell pe-2" />Shop</Link>
                         </li>
-                        <li className="nav-item">
-                           <Link className="nav-link mx-2" to="/profile"><i className="fas fa-heart pe-2" />Profile</Link>
-                        </li>
+
                         <li className="nav-item ms-3">
                            <Link className="btn btn-black btn-rounded" to="/Carts">Cart</Link>
                         </li>

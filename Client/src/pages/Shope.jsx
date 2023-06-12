@@ -43,9 +43,19 @@ const Shope = () => {
 
 
    return (
-      <div className="container mt-5">
+      <div className="container mt-5" style={{ backgroundColor: "GrayText" }}>
          <h1>Products</h1>
-         <input type="text" onChange={onSearch} />
+         <div className="card-body row  no-gutters align-items-center">
+            <div className="col-auto">
+               <i className="fas fa-search h4 text-body" />
+            </div>
+            <div className="col">
+               <input className="form-control form-control-lg " style={{ width: "300px" }} onChange={onSearch} type="search" placeholder="Search topics or keywords" />
+            </div>
+         </div>
+
+
+
          <div className="row">
             {
                filteredProduct?.map((product) => <Product key={product.id} product={product} addCart={addProduct} />
